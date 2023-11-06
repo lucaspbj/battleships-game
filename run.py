@@ -3,17 +3,20 @@ import string
 
 # Create the Game Grid
 def create_grid(size):
+    # Initialize the grid with 'O' (ocean) in all cells
     grid = [['O' for _ in range(size)] for _ in range(size)]
     return grid
 
 # Display the Grid
 def print_grid(grid):
+    # Display the grid with row numbers and column letters
     print("   " + " ".join(string.ascii_uppercase[:len(grid)]))
     for i, row in enumerate(grid):
         print(f"{i+1:2} " + " ".join(row))
 
 # Place Computer's Battleships
 def place_ships(grid, num_ships):
+    # Randomly place computer's battleships on the grid
     for _ in range(num_ships):
         while True:
             ship_row = random.randint(0, len(grid) - 1)
@@ -24,6 +27,7 @@ def place_ships(grid, num_ships):
 
 # Check Valid Guess
 def is_valid_guess(guess, size):
+    # Check if the player's guess is within the grid boundaries
     row, col = guess
     return 0 <= row < size and 0 <= col < size
 
@@ -58,11 +62,11 @@ def play_battleships(size, num_ships):
 
         if computer_grid[row][col] == 'S':
             print("You hit a battleship!")
-            player_grid[row][col] = 'H'  # Mark the hit with 'H'
-            computer_grid[row][col] = 'X'
+            player_grid[row][col] = 'H'  # 'H' represents a hit on a battleship
+            computer_grid[row][col] = 'X' 
         else:
             print("You missed.")
-            player_grid[row][col] = 'X'
+            player_grid[row][col] = 'X' # 'X' represents a missed shot
 
 
         print("Your grid:")
