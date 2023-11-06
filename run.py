@@ -22,3 +22,49 @@ def place_ships(grid, num_ships):
 def is_valid_guess(guess, size):
     row, col = guess
     return 0 <= row < size and 0 <= col < size
+
+def play_battleships(size, num_ships):
+    player_grid = create_grid(size)
+    computer_grid = create_grid(size)
+
+    print("Welcome to Battleships!")
+    print("Here is your grid:")
+    print_grid(player_grid)
+
+    place_ships(computer_grid, num_ships)
+
+    turns = 0
+    while True:
+        print(f"Turn {turns + 1}")
+        guess = input("Enter your guess (e.g., A3): ")
+        if len(guess) != 2 or not guess[1].isdigit():
+            print("Invalid input. Please enter your guess as a letter and a number (e.g., A3).")
+            continue
+        col = string.ascii_uppercase.index(guess[0].upper())
+        row = int(guess[1]) - 1
+
+        if not is_valid_guess((row, col), size):
+            print("Your guess is off-grid. Try again.")
+            continue
+
+        if player_grid[row][col] == 'X':
+            print("You've already guessed this location. Try again.")
+            continue
+
+        if computer_grid[row][col] == 'S':
+            print("You hit a battleship!")
+            computer_grid[row][col] = 'X'
+        else:
+            print("You missed.")
+            player_grid[row][col] = 'X'
+
+        print("Your grid:")
+        print_grid(player_grid)
+
+        if all(cell == 'X' for row in computer_grid for cell in row):
+            print("Congratulations! You sank all the battleships. You win!")
+            break
+
+        turns += 1
+
+        turns += 1
