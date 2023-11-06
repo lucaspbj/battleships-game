@@ -1,28 +1,33 @@
 import random
 import string
 
+# Create the Game Grid
 def create_grid(size):
     grid = [['O' for _ in range(size)] for _ in range(size)]
     return grid
 
+# Display the Grid
 def print_grid(grid):
     print("   " + " ".join(string.ascii_uppercase[:len(grid)]))
     for i, row in enumerate(grid):
-        print(f"{i + 1:2} " + " ".join(row))
+        print(f"{i+1:2} " + " ".join(row))
 
+# Place Computer's Battleships
 def place_ships(grid, num_ships):
     for _ in range(num_ships):
         while True:
             ship_row = random.randint(0, len(grid) - 1)
             ship_col = random.randint(0, len(grid) - 1)
-            if grid[ship_row][ship_col] == 'T':
+            if grid[ship_row][ship_col] == 'O':
                 grid[ship_row][ship_col] = 'S'
                 break
 
+#  Check Valid Guess
 def is_valid_guess(guess, size):
     row, col = guess
     return 0 <= row < size and 0 <= col < size
 
+# Play the Game
 def play_battleships(size, num_ships):
     player_grid = create_grid(size)
     computer_grid = create_grid(size)
@@ -37,7 +42,7 @@ def play_battleships(size, num_ships):
     while True:
         print(f"Turn {turns + 1}")
         guess = input("Enter your guess (e.g., A3): ")
-        if len(guess) != 2 or not guess[1].isdigit():
+        if len(guess) != 2 or not guess[0].isdigit():
             print("Invalid input. Please enter your guess as a letter and a number (e.g., A3).")
             continue
         col = string.ascii_uppercase.index(guess[0].upper())
@@ -61,15 +66,6 @@ def play_battleships(size, num_ships):
         print("Your grid:")
         print_grid(player_grid)
 
-        if all(cell == 'X' for row in computer_grid for cell in row):
+        if all(all(cell == 'X' for cell in row) for row in computer_grid):
             print("Congratulations! You sank all the battleships. You win!")
             break
-
-        turns += 1
-
-        turns += 1
-
-if __name__ == "__main__":
-    grid_size = int(input("Enter the grid size (e.g., 6): "))
-    num_ships = int(input("Enter the number of battleships (e.g., 4): "))
-    play_battleships(grid_size, num_ships)
