@@ -18,3 +18,7 @@ def place_ships(grid, num_ships):
             if grid[ship_row][ship_col] == 'O':
                 grid[ship_row][ship_col] = 'S'
                 break
+
+def is_valid_guess(guess, size):
+    row, col = guess
+    return 0 <= row < size and 0 <= col < size
