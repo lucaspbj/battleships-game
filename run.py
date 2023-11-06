@@ -22,7 +22,7 @@ def place_ships(grid, num_ships):
                 grid[ship_row][ship_col] = 'S'
                 break
 
-#  Check Valid Guess
+# Check Valid Guess
 def is_valid_guess(guess, size):
     row, col = guess
     return 0 <= row < size and 0 <= col < size
@@ -42,7 +42,7 @@ def play_battleships(size, num_ships):
     while True:
         print(f"Turn {turns + 1}")
         guess = input("Enter your guess (e.g., A3): ")
-        if len(guess) != 2 or not guess[0].isdigit():
+        if len(guess) != 2 or not guess[1].isdigit():
             print("Invalid input. Please enter your guess as a letter and a number (e.g., A3).")
             continue
         col = string.ascii_uppercase.index(guess[0].upper())
@@ -58,14 +58,23 @@ def play_battleships(size, num_ships):
 
         if computer_grid[row][col] == 'S':
             print("You hit a battleship!")
+            player_grid[row][col] = 'H'  # Mark the hit with 'H'
             computer_grid[row][col] = 'X'
         else:
             print("You missed.")
             player_grid[row][col] = 'X'
 
+
         print("Your grid:")
         print_grid(player_grid)
 
-        if all(all(cell == 'X' for cell in row) for row in computer_grid):
+        if 'S' not in [cell for row in computer_grid for cell in row]:
             print("Congratulations! You sank all the battleships. You win!")
             break
+
+        turns += 1
+
+if __name__ == "__main__":
+    grid_size = int(input("Enter the grid size (e.g., 6): "))
+    num_ships = int(input("Enter the number of battleships (e.g., 4): "))
+    play_battleships(grid_size, num_ships)
