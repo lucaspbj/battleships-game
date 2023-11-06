@@ -15,7 +15,7 @@ def place_ships(grid, num_ships):
         while True:
             ship_row = random.randint(0, len(grid) - 1)
             ship_col = random.randint(0, len(grid) - 1)
-            if grid[ship_row][ship_col] == 'O':
+            if grid[ship_row][ship_col] == 'T':
                 grid[ship_row][ship_col] = 'S'
                 break
 
@@ -68,3 +68,8 @@ def play_battleships(size, num_ships):
         turns += 1
 
         turns += 1
+
+if __name__ == "__main__":
+    grid_size = int(input("Enter the grid size (e.g., 6): "))
+    num_ships = int(input("Enter the number of battleships (e.g., 4): "))
+    play_battleships(grid_size, num_ships)
