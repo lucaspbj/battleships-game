@@ -1,32 +1,48 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Battleships Game
 
-Welcome,
+This is a simple implementation of the classic game "Battleships" in Python, where you play against the computer.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+## Table of Contents
 
-## Reminders
+- [Description](#description)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [How to Play](#how-to-play)
+- [Contributing](#contributing)
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+## Description
 
-## Creating the Heroku app
+This Python program allows you to play the classic game of Battleships against the computer. It provides a text-based grid where you can guess the location of the computer's hidden battleships.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## Features
 
-1. `heroku/python`
-2. `heroku/nodejs`
+- A grid is displayed to represent your game board.
+- Battleships are hidden on the computer's game board.
+- You can guess the locations of the computer's battleships.
+- The game continues until you sink all the computer's battleships or you give up.
+- The game provides feedback on each guess, indicating whether you hit or missed a battleship.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Getting Started
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+To play the game, follow these steps:
 
-Connect your GitHub repository and deploy as normal.
+1. Clone the repository to your local machine.
 
-## Constraints
+2. Run the game by executing the `run.py` script.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+3. Follow the on-screen instructions to set the grid size and the number of battleships.
 
----
+4. Start guessing the locations of the computer's battleships.
 
-Happy coding!
+## How to Play
+
+- The grid will be displayed with letters representing columns and numbers representing rows.
+- Enter your guess in the format of a letter and a number (e.g., A3) when prompted.
+- The game will provide feedback on each guess.
+- Keep guessing until you sink all the computer's battleships or decide to give up.
+
+## Contributing
+
+Contributions are welcome! If you want to improve the game or fix any issues, please create a pull request.
+
+Enjoy playing the Battleships game!
